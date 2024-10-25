@@ -1,15 +1,16 @@
 const inquirer = require("inquirer");
+const prompt = inquirer.createPromptModule()
 
 class View {
     static chooseTopic = {
-        nighWalk: "./topics/nighthawk_flashcard_data.txt",
-        otter: "./topics/otter_flashcard_data.txt",
-        raccoon: "./topics/raccoon_flashcard_data.txt",
+        nighWalk: "./nighthawk_flashcard_data.txt",
+        otter: "./otter_flashcard_data.txt",
+        raccoon: "./raccoon_flashcard_data.txt",
     }
 
     static async topicQuiz(){
-        const topics = await inquirer
-  .prompt({
+        const topics = await prompt({
+
     type: 'list', 
     name: "tema",
     message: "Давай поиграем!",
@@ -19,8 +20,7 @@ class View {
     }
     
     static async answer(question) {
-        const giveTrueAnwser = await inquirer
-        .prompt({
+        const giveTrueAnwser = await prompt({
             type: "input",
             name: "otvet",
             message: `${question}\n`

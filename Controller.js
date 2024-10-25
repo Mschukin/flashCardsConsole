@@ -1,18 +1,19 @@
 const fs = require('fs/promises');
-const model = require('./Model');
-const view = require('./View');
+const Model = require('./Model');
+const View = require('./View');
 
 class Controller {
   constructor(countAnswer = 0) {
     this.countAnswer = countAnswer;
   }
-  static async run() {
+ async run() {
     const getTheme = await View.topicQuiz(); // получаю тему от Асели:
 
     const classMod = new Model(); //создаю новую модель
+    
     classMod.getCards(getTheme); //получаю массив объектов -[{вопрос:ответ}]
 
-    while (model.nextCards) {//пока метод проверки карт соответствует условию:
+    while (classMod.nextCards()) {//пока метод проверки карт соответствует условию:
       const ansQues = classMod.questionGet(); //получаю вопрос от модели
       const answer = await View.answer(ansQues); //вывожу метод (инпут, вопрос, сообщение)
       const result = classMod.answerCheck(answer); //запускаю проверку ответа от модели
@@ -25,12 +26,13 @@ class Controller {
         message = 'иди учись';
       }
       View.printConsole(message);
-      const finish = ((this.countAnswer / classMod.questionCount()) * 100).toFixed(1);
-      View.printConsole(`Твой результат - ${message}%`); //запускаю метод сообщения вью, и передаю туда сообщение с результатом
+      const finish = ((this.countAnswer / classMod.questionCount()) * 100);
+      View.printConsole(`Твой результат - ${finish}%`); //запускаю метод сообщения вью, и передаю туда сообщение с результатом
     }
   }
 }
 
 
-Controller.run()
+const gameStart = new Controller()
+gameStart.run()
 module.exports = Controller;
