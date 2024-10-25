@@ -15,15 +15,15 @@ class Controller {
 
     while (classMod.nextCards()) {//пока метод проверки карт соответствует условию:
       const ansQues = classMod.questionGet(); //получаю вопрос от модели
-      const answer = await View.answer(ansQues); //вывожу метод (инпут, вопрос, сообщение)
+      const answer = await View.answer(ansQues); //вывожу метод (инпут, ответ, сообщение)
       const result = classMod.answerCheck(answer); //запускаю проверку ответа от модели
       let message = '';
       if (result) {
         //вывожу сообщение: если верно, прибавляю к countAnswer+1 и сообщение, если нет, ничего не прибавляю, вывожу сообщение
         this.countAnswer++;
-        message = 'ты молодец';
+        message = 'Ответ верный!';
       } else {
-        message = 'иди учись';
+        message = 'Нужно подтянуть знания!';
       }
       View.printConsole(message);
       const finish = ((this.countAnswer / classMod.questionCount()) * 100);
