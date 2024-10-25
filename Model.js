@@ -7,14 +7,14 @@ class Model {
   }
 
   getCards(path) {
-    const result = (this.cards = fs
+    const result = fs
       .readFileSync(`./topics/${path}`, 'utf-8')
-      .split('\n\n')).map((card) => {
+      .split('\n\n').map((card) => {
       const [question, answer] = card.split('\n');
+      
       return { question, answer };
     });
-
-    return result;
+    this.cards = result;
   }
 
   questionCount() {
