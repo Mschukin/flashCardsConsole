@@ -11,17 +11,26 @@ class View {
         const topics = await inquirer
   .prompt({
     type: 'list', 
-    name: "topic",
-    message: "Выбери тему!",
+    name: "tema",
+    message: "Давай поиграем!",
     choices: Object.keys(this.chooseTopic)
-    }) return this.chooseTopic[topics.topics]
+    }) 
+    return this.chooseTopic[topics.tema]
     }
     
-    
+    static async answer(question) {
+        const giveTrueAnwser = await inquirer
+        .prompt({
+            type: "input",
+            name: "otvet",
+            message: `${question}\n`
+        }) 
+        return giveTrueAnwser.otvet
+    }
 
-
-
-
-
+    static printConsole(message){
+        console.log(message)
+    }
 }
 
+module.exports = View
