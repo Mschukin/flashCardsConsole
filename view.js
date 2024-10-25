@@ -27,10 +27,10 @@ class View {
         }) 
         return giveTrueAnwser.otvet
     }
-
     static printConsole(message){
         console.log(message)
     }
+  
 }
 
 module.exports = View
