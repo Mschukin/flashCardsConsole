@@ -35,6 +35,5 @@ class Model {
   }
 }
 
-console.log(Model.getCards('nighthawk_flashcard_data.txt'));
 
 module.exports = Model;

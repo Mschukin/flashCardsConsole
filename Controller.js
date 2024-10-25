@@ -1,5 +1,5 @@
 const fs = require('fs/promises');
-const model = require('./Model');
+const Model = require('./Model');
 const view = require('./View');
 
 class Controller {
@@ -32,5 +32,7 @@ class Controller {
 }
 
 
-Controller.run()
+const gameStart = new Controller()
+
+
 module.exports = Controller;

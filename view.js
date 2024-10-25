@@ -2,14 +2,17 @@ const inquirer = require("inquirer");
 
 class View {
     static chooseTopic = {
-        nighWalk: "./topics/nighthawk_flashcard_data.txt",
-        otter: "./topics/otter_flashcard_data.txt",
-        raccoon: "./topics/raccoon_flashcard_data.txt",
+        Ночные ястребы: "./topics/nighthawk_flashcard_data.txt",
+        Выдра: "./topics/otter_flashcard_data.txt",
+        Енотики: "./topics/raccoon_flashcard_data.txt",
+        Разработчики: "t./opics/aboutDevelopers.txt"
+        Эльбрус: ""
+        Javascript: ""
+
     }
 
     static async topicQuiz(){
-        const topics = await inquirer
-  .prompt({
+        const topics = await inquirer.prompt({
     type: 'list', 
     name: "tema",
     message: "Давай поиграем!",
